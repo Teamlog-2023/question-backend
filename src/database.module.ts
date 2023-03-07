@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './auth/user.entity';
+import { Question } from './question/question.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { User } from './auth/user.entity';
         username: config.get<string>('DB_USER', 'admin'),
         password: config.get<string>('DB_PASS', 'farmsert1234'),
         database: config.get<string>('DB_NAME', 'question'),
-        entities: [User],
+        entities: [User, Question],
         synchronize: true,
         charset: 'utf8_general_ci',
       }),
