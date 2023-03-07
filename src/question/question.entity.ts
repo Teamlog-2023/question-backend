@@ -11,7 +11,7 @@ export class Question {
   @PrimaryGeneratedColumn('uuid')
   uuid: string;
 
-  @Column('text')
+  @Column('enum', { enum: UserRole, default: UserRole.Layer7 })
   id: UserRole;
 
   @Column('text')

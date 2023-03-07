@@ -23,11 +23,9 @@ export class QuestionController {
     return await this.question.find();
   }
 
-  @Get('club')
-  @ApiBearerAuth()
-  @UseGuards(AccessGuard)
-  async getClubQuestions(@Req() req: Request) {
-    return await this.question.findBy({ id: req.user.id });
+  @Get('club/:id')
+  async getClubQuestions(@Param('id') id: number) {
+    return await this.question.findBy({ id });
   }
 
   @Post()
